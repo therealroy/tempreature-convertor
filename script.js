@@ -1,52 +1,17 @@
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function () {
-    var div = this.parentElement;
-    div.style.display = "none";
-  };
-}
-//Add check btn
-var list =
-document.querySelector('ul');
-list.addEventListener(
-  'click',
-  function (ev) {
-    if (ev.target.tagName === 'LI') {
-      ev.target.classList.toggle('checked');
-    }
-  },false);
+var cel = document.getElementById("cel");
+var fah = document.getElementById("fah");
+ cel.addEventListener('input' , function(){
+    let c = this.value;
+    let f = (c * 9/5) +32;
 
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myinput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === "") {
-    alert("you must right something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myinput").value = "";
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
+    fah.value = f;
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function () {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
+ })
+
+ fah.addEventListener('input' , function(){
+    let f = this.value;
+    let c = (f - 32) * 5/9;
+
+    cel.value = c;
+
+ })
